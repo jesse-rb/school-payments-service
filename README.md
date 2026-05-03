@@ -2,15 +2,21 @@
 
 School payments service
 
-# Feature Plan
+# AI assisted usaged
+
+- For this project I used Large Language Models to assist in brushing up on python and react, especially Fast API, it was a useful assistant to search documentation or general idiomatic python examples
+- As I spent much time on the initial design of the schema and payment API endpoint and running out of time, I ended up heavily relying on AI generated code (using the likes of Claude LLM) to generate large protion of the `Trip.tsx` react component, which does contain the most complex parts of the frontend
+- I think the quality of the rushed AI parts is sufficient for a proof of concept, however for a real production feature I would certainly take a more hands on approach to ensure the software quality remains up to standard
+
+# Feature plan
 
 - [x] View trips (seed pre-exsiting for the scope of this exercise)
-- [ ] Allow primary guardian to take payments for registering dependant to trip
-    - [ ] Single payment can be made for multiple dependants going on multiple trips
-    - [ ] Save primary guardian and dependants
-    - [ ] Save payment
-    - [ ] Save trip registration
-    - [ ] When primary guardian returns, list their existing dependants (for production, this would REQUIRE auth)
+- [x] Allow primary guardian to take payments for registering dependant to trip
+    - [x] Single payment can be made for multiple dependants going on multiple trips
+    - [x] Save primary guardian and dependants
+    - [x] Save payment
+    - [x] Save trip registration
+    - [ ] When primary guardian returns to webapp, list their existing dependants (for production, this would REQUIRE auth)
 - [ ] Add Auth
     - [ ] Email temporary login code and jwt
 - [ ] Add server side kart session storage

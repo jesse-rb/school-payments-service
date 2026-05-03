@@ -17,6 +17,21 @@ export interface TripType {
     updated_at: string;
 }
 
-export interface TripsResponseType {
-    data: TripType[];
+export interface PaymentType {
+    card_number: string;
+    expiry_date: string;
+    cvv: string;
+}
+
+export interface StudentType {
+    id: string;
+    firstname: string;
+    lastname: string;
+    is_new?: boolean;
+}
+
+export interface UserType {
+    email: string;
+    firstname: string;
+    lastname: string;
 }

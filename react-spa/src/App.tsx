@@ -1,21 +1,8 @@
 import { Link } from "react-router";
 import "./App.css";
-import type { TripsResponseType, TripType } from "./common_types";
+import type { TripType } from "./common_types";
 import { useEffect, useState } from "react";
-
-function formatTime(iso: string) {
-    return new Date(iso).toLocaleTimeString("en-NZ", {
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-}
-
-function formatDuration(start: string, end: string) {
-    const mins = (new Date(end).getTime() - new Date(start).getTime()) / 60000;
-    const h = Math.floor(mins / 60);
-    const m = mins % 60;
-    return m > 0 ? `${h}h ${m}m` : `${h}h`;
-}
+import { formatDuration, formatTime } from "./util";
 
 function App() {
     const [trips, setTrips] = useState<TripType[]>([]);
@@ -25,6 +12,10 @@ function App() {
     }, []);
 
     async function loadTrips() {
+        interface TripsResponseType {
+            data: TripType[];
+        }
+
         const resp = await fetch("/api/trips");
         if (!resp.ok) {
             throw new Response("Failed to load trips", { status: resp.status });
@@ -48,6 +39,7 @@ function App() {
                         key={trip.id}
                         to={`/trips/${trip.id}`}
                         className="group bg-white border border-stone-200 rounded-xl px-5 py-4 flex flex-col md:flex-row md:items-center justify-between hover:border-stone-300 hover:shadow-sm transition-all gap-4"
+                        state={trip}
                     >
                         {/* Left: name + school + date */}
                         <div className="flex items-center gap-4 flex-col sm:flex-row">

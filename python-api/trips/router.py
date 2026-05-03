@@ -26,7 +26,7 @@ class TripResponse(BaseModel):
     model_config: ClassVar[ConfigDict] = ConfigDict(from_attributes=True)
     id: UUID
     name: str
-    cost: Decimal
+    cost: float
     start_datetime: datetime.datetime
     end_datetime: datetime.datetime
     school_id: UUID
@@ -39,8 +39,19 @@ class ListResponse(BaseModel):
     data: list[TripResponse]
 
 
+class GetResponse(BaseModel):
+    data: TripResponse
+
+
 @router.get("")
 async def get_all_trips(db: Session = Depends(get_db)) -> ListResponse:
     stmt = select(Trip).options(selectinload(Trip.school))
     trips = db.execute(stmt).scalars().all()
     return ListResponse(data=[TripResponse.model_validate(trip) for trip in trips])
+
+
+@router.get("/{id}")
+async def get_trip(id: UUID, db: Session = Depends(get_db)) -> GetResponse:
+    stmt = select(Trip).where(Trip.id.__eq__(id)).options(selectinload(Trip.school))
+    trip = db.execute(stmt).scalar_one_or_none()
+    return GetResponse(data=TripResponse.model_validate(trip))
