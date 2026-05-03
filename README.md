@@ -52,7 +52,7 @@ make docker-db-destroy
 
 **run db migrations**
 ```
-make migrate
+make atlas-migrate-apply
 ```
 
 **Start frontend dev server**

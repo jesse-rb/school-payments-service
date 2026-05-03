@@ -1,4 +1,4 @@
-.PHONY: docker-db-up docker-db-down docker-db-destroy atlas-schema-apply atlas-migrate-apply dev-frontend dev-backend adminer-up adminer-down
+.PHONY: docker-db-up docker-db-down docker-db-destroy atlas-migrate-new atlas-migrate-hash atlas-migrate-apply dev-frontend dev-backend adminer-up adminer-down
 
 include .env
 
@@ -11,8 +11,6 @@ docker-db-down:
 docker-db-destroy:
 	docker-compose down db -v
 
-# atlas-schema-apply:
-# 	atlas schema apply -c file://atlas.hcl --env local
 atlas-migrate-new:
 	atlas migrate new
 
