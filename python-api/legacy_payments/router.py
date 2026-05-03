@@ -19,7 +19,7 @@ class Payment(BaseModel):
     activity_id: str
 
 
-@router.post("/")
+@router.post("")
 async def create_payment(payment_request: Payment):
     resp = LegacyPaymentProcessor().process_payment(payment_request.model_dump())
     if resp.success:

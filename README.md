@@ -4,7 +4,7 @@ School payments service
 
 # Feature Plan
 
-- [ ] View trips (seed pre-exsiting for the scope of this exercise)
+- [x] View trips (seed pre-exsiting for the scope of this exercise)
 - [ ] Allow primary guardian to take payments for registering dependant to trip
     - [ ] Single payment can be made for multiple dependants going on multiple trips
     - [ ] Save primary guardian and dependants

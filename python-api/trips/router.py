@@ -9,7 +9,7 @@ from models.service import Trip
 router = APIRouter()
 
 
-@router.get("/")
+@router.get("")
 async def get_all_trips(db: Session = Depends(get_db)):
     stmt = select(Trip).options(selectinload(Trip.school))
     trips = db.execute(stmt).scalars().all()
