@@ -1,8 +1,12 @@
+-- ####
+-- #### Create tables
+-- ####
+
 CREATE TABLE IF NOT EXISTS users(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     first_name VARCHAR NOT NULL,
     last_name VARCHAR NOT NULL,
-    email VARCHAR NOT NULL,
+    email VARCHAR,
     primary_guardian_id UUID,
 
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -15,15 +19,29 @@ CREATE TABLE IF NOT EXISTS users(
 );
 
 
+CREATE TABLE IF NOT EXISTS schools(
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR NOT NULL,
+
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+
 CREATE TABLE IF NOT EXISTS trips(
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR NOT NULL,
     cost DECIMAL(10,2) NOT NULL,
     start_datetime TIMESTAMPTZ NOT NULL,
     end_datetime TIMESTAMPTZ NOT NULL,
+    school_id UUID NOT NULL,
 
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+
+    CONSTRAINT fk_schools
+        FOREIGN KEY(school_id)
+        REFERENCES schools(id)
 );
 
 

@@ -1,6 +1,4 @@
-from fastapi import FastAPI, HTTPException
-from fastapi.exceptions import RequestValidationError
-from fastapi.responses import PlainTextResponse
+from fastapi import FastAPI
 
 from legacy_payments import router as legacy_payments
 

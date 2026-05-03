@@ -2,6 +2,19 @@
 
 School payments service
 
+# Feature Plan
+
+- [ ] View trips (seed pre-exsiting for the scope of this exercise)
+- [ ] Allow primary guardian to take payments for registering dependant to trip
+    - [ ] Single payment can be made for multiple dependants going on multiple trips
+    - [ ] Save primary guardian and dependants
+    - [ ] Save payment
+    - [ ] Save trip registration
+    - [ ] When primary guardian returns, list their existing dependants (for production, this would REQUIRE auth)
+- [ ] Add Auth
+    - [ ] Email temporary login code and jwt
+- [ ] Add server side kart session storage
+
 # Local development
 
 ### Requirements
@@ -74,6 +87,6 @@ flowchart LR
     %% === Relations ===
     users <-->|user can attend many trips, trip can be attended by many users| trips
     users -->|user can make many payments| payments
-    payments -->|paymet can be for single trip| trips
+    payments -->|paymet can be for multiple trips and users at the same time| trips
     users -->|user can be primary guardian of many users| users
 ```
