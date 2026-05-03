@@ -38,6 +38,11 @@ School payments service
 - python
 - uv
 
+.env.example should already have defaults for local development
+```
+cp .env.example .env
+```
+
 **db migrations**
 
 - Atlas CLI https://atlasgo.io/getting-started

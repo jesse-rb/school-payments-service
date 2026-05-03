@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=deps /app/.venv /app/.venv
 
 # Copy application source
-COPY --exclude=.venv . .
+COPY --exclude=.venv --exclude=.env . .
 
 # Non-root user for security
 RUN useradd -m appuser && chown -R appuser /app
