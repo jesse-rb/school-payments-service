@@ -3,13 +3,13 @@
 include .env
 
 docker-db-up:
-	docker-compose up db -d
+	docker compose up db -d
 
 docker-db-down:
-	docker-compose down db
+	docker compose down db
 
 docker-db-destroy:
-	docker-compose down db -v
+	docker compose down db -v
 
 atlas-migrate-new:
 	atlas migrate new

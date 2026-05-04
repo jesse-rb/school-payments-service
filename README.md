@@ -26,7 +26,7 @@ School payments service
 ### Requirements
 
 - Ability to run Makefile
-- docker and docker-compose
+- docker and docker compose
 
 **frontend**
 
@@ -76,12 +76,12 @@ make dev-frontend
 make dev-backend
 ```
 
-### Start/stop entire stack with docker-compose for testing more production like builds running locally containerized
+### Start/stop entire stack with docker compose for testing more production like builds running locally containerized
 ```
-docker-compose up --build
+docker compose up --build
 ```
 ```
-docker-compose down
+docker compose down
 ```
 
 # Python API
